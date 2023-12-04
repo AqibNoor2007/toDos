@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="../../assets/logo.png" />
+    <link rel="stylesheet" href="../../components/loader/Loader.css" />
+    <link rel="stylesheet" href="./index.css" />
+    <link rel="stylesheet" href="../common/common.css"/>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link
+    href="../../components/notification/Notification.css"
+    rel="stylesheet"
+  />
+    <script defer src="../../components/loader/Loader.js"></script>
+    <script
+      src="../../firebaseConfig/firebaseConfig.js"
+      defer
+      type="module"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+      defer
+    ></script>
+    <script src="../../components/notification/Notification.js" defer></script>
+    <script src="./index.js" defer type="module"></script>
+    <title>ToDo</title>
+  </head>
+  <body>
+    <div id="notif" ></div>
+    <img src="../../assets/logo.png" class="logo-img" />
+    <div class="main-container">
+      <div class="custom-row">
+        <div
+          class="col-md-5 col-12 d-flex justify-content-center align-items-center"
+        >
+          <div class="sign-in">
+            <h2 style="text-align: center">Sign In</h2>
+            <button
+              id="googleLogIn"
+              type="button"
+              class="btn btn-light btn-lg mt-3 mb-3"
+              style="width: 100%"
+            >
+              <img src="../../assets/googleIcon.png" style="height: 23px" />
+              Continue With Google
+            </button>
+            <div class="line-container mb-2">
+              <div class="line"></div>
+              <div class="text">or sign in with</div>
+              <div class="line"></div>
+            </div>
+            <form
+              class="row g-3 needs-validation"
+              novalidate
+            >
+              <div class="col-12">
+                <label for="validationCustomUsername" class="form-label fs-5"
+                  >Email</label
+                >
+                <div class="input-group has-validation">
+                  <input
+                    type="email"
+                    class="form-control p-2 "
+                    id="email"
+                    aria-describedby="inputGroupPrepend"
+                    placeholder="example@gmail.com"
+                    required
+                  />
+                  <div id="emailError" class="invalid-feedback">This field is required.</div>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <label for="validationCustom02" class="form-label fs-5"
+                  >Password</label
+                >
+                <input
+                  type="password"
+                  class="form-control p-2"
+                  id="password"
+                  placeholder="*********"
+                  required
+                />
+                <div id="passwordError" class="invalid-feedback">
+                  This feild is required.
+                </div>
+              </div>
+
+              <div class="col-12">
+                <button class="btn btn-primary btn-lg w-100 disableBtn" id="signIn" type="submit">
+                  Continue
+                </button>
+              </div>
+              <div class="line-container">
+                <div class="line"></div>
+                <div class="text">Don't have an account</div>
+                <div class="line"></div>
+              </div>
+              <div class="col-12">
+                <button
+                  class="btn btn-light w-100 btn-lg"
+                  id="signUpNavigation"
+                >
+                  Sign Up
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-7 login-img">
+          <img
+          src="../../assets/SigInImg.jpg"
+          class="img-fluid"
+          style="height: 100%"
+          />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

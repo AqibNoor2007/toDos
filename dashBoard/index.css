@@ -1,0 +1,84 @@
+.icon {
+  font-size: 22px;
+  cursor: pointer !important;
+}
+.pi-0 {
+  padding-inline: 0 !important;
+}
+.customWidth {
+  width: 80% !important;
+}
+.customSpacing {
+  margin-top: 6px;
+}
+.maginRight {
+  margin-right: 10px;
+}
+.logo-img {
+  height: 80px;
+}
+.captilize {
+  text-transform: capitalize;
+}
+.disableBtn {
+  border-color: #d9d9d9 !important;
+  color: rgba(0, 0, 0, 0.25) !important;
+  background-color: rgba(0, 0, 0, 0.04) !important;
+}
+.disableBtn:hover {
+  background: rgba(0, 0, 0, 0.04) !important;
+}
+.formInput {
+  padding: 10px 13px !important;
+  font-size: 21px !important;
+}
+.formBtn {
+  padding: 0px 19px !important;
+  font-size: 19px !important;
+  margin-left: 18px !important;
+}
+.filterSelect {
+  padding: 4px 13px;
+  border-radius: 7px;
+  font-size: 19px;
+}
+.page-item {
+  cursor: pointer;
+  border: 2px solid gray;
+  padding: 2px 8px;
+  border-radius: 8px;
+  font-size: 20px;
+  font-weight: 500;
+  margin-right: 8px;
+}
+@media screen and (max-width: 992px) {
+  .container {
+    max-width: 100% !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .customWidth {
+    width: 100% !important;
+  }
+  .customSpacing {
+    margin-top: 0px;
+    margin-right: 6px;
+  }
+  .listItem {
+    flex-direction: column-reverse !important;
+  }
+  .editDeleteBtn {
+    display: flex !important;
+    flex-direction: row-reverse !important;
+  }
+  .mb {
+    margin-top: 3rem !important;
+  }
+  .customMessage {
+    position: absolute;
+    top: 110px;
+    width: 100%;
+    text-align: center;
+  }
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./assets/logo.png" />
+    <link rel="stylesheet" href="./components/loader/Loader.css" />
+    <script defer src="./components/loader/Loader.js"></script>
+    <script
+      src="./firebaseConfig/firebaseConfig.js"
+      defer
+      type="module"
+    ></script>
+    <title>Todo</title>
+  </head>
+  <body>
+    <div style="text-align: center; margin-top: 9rem">
+      <img src="./assets/logo.png" />
+      <h1>Welcome ToDo app</h1>
+    </div>
+
+    <script type="module">
+      import {
+        getAuth,
+        onAuthStateChanged,
+      } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js";
+      const auth = getAuth();
+      showLoader();
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          hideLoader();
+          window.location.href = "/dashBoard/index.html";
+        } else {
+          hideLoader();
+          window.location.href = "/auth/signIn/index.html";
+        }
+      });
+    </script>
+  </body>
+</html>

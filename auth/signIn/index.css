@@ -1,0 +1,39 @@
+.main-container {
+  height: 100vh;
+  padding-inline: 1rem;
+}
+.sign-in {
+  max-width: 400px;
+  border: 1px solo;
+  width: 100%;
+  padding: 2rem 3rem;
+  border: 1px solid lightgray;
+  border-radius: 16px;
+}
+.logo-img {
+  display: none;
+  height: 80px;
+  position: absolute;
+  left: 20px;
+  top: 20px;
+}
+.custom-row {
+  display: flex;
+  height: 100%;
+}
+@media screen and (max-width: 992px) {
+  .sign-in {
+    padding: 1rem 2rem !important;
+  }
+}
+@media screen and (max-width: 768px) {
+  .sign-in {
+    margin-top: 5rem;
+  }
+  .logo-img {
+    display: block;
+  }
+  .login-img {
+    display: none;
+  }
+}

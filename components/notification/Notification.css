@@ -1,0 +1,55 @@
+.visible {
+  animation: movein 0.5s ease forwards, moveout 1.5s 2s ease forwards;
+}
+
+#notif {
+  max-width: 400px;
+  width: 100%;
+  border-radius: 3px;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 10px;
+  right: -100%;
+  z-index: 999999;
+}
+
+.notification {
+  margin: 10px;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  color: black;
+  overflow: hidden;
+  font-size: 18px;
+}
+
+.success {
+  background-color: #045907;
+  width: 100%;
+  color: white;
+}
+
+.error {
+  background-color: #f05555f0;
+  width: 100%;
+}
+@keyframes movein {
+  from {
+    right: -100%;
+  }
+  to {
+    right: 10px;
+  }
+}
+
+@keyframes moveout {
+  from {
+    right: 10px;
+  }
+  to {
+    right: -100%;
+  }
+}
