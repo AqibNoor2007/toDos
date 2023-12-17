@@ -4,18 +4,18 @@ import {
   signInWithPopup,
   createUserWithEmailAndPassword,
   onAuthStateChanged,
-} from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js";
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import {
   getStorage,
   ref,
   uploadBytes,
-} from "https://www.gstatic.com/firebasejs/10.6.0/firebase-storage.js";
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
 import {
   getFirestore,
   collection,
   setDoc,
   doc,
-} from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 const provider = new GoogleAuthProvider();
 const auth = getAuth();
@@ -41,7 +41,6 @@ let user_gender = "male";
 let handleAuthStateChange = 0;
 
 signUpContinue.setAttribute("disabled", "true");
-
 showLoader();
 onAuthStateChanged(auth, (user) => {
   if (user) {
@@ -75,7 +74,7 @@ googleContinue.addEventListener("click", () => {
       setDoc(doc(collection(cloudStorage, "auth_users"), user.uid), {
         user_name: user.displayName,
         user_email: user.email,
-        profile_img: uploadProfile.ref.fullPath,
+        profile_img: user,
       }).then(() => {
         window.location.href = "/dashBoard/index.html";
         hideLoader();
@@ -122,7 +121,7 @@ signUpContinue.addEventListener("click", (event) => {
       console.log(error, "error firebase");
       if (error.code === "auth/email-already-in-use") {
         const emailError = document.getElementById("emailError");
-        emailError.innerHTML = `Email is alrady in use`;
+        emailError.innerHTML = `Email is already in use`;
         emailError.classList.add("displayError");
         document.getElementById("email").classList.add("inputError");
       }

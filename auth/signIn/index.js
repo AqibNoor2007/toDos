@@ -4,18 +4,18 @@ import {
   signInWithPopup,
   signInWithEmailAndPassword,
   onAuthStateChanged,
-} from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js";
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import {
   getStorage,
   ref,
   uploadBytes,
-} from "https://www.gstatic.com/firebasejs/10.6.0/firebase-storage.js";
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
 import {
   getFirestore,
   collection,
   setDoc,
   doc,
-} from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 const provider = new GoogleAuthProvider();
 const auth = getAuth();
@@ -69,10 +69,10 @@ googleContinue.addEventListener("click", () => {
         profile_img: uploadProfile.ref.fullPath,
       }).then(() => {
         window.location.href = "/dashBoard/index.html";
-        hideLoader();
       });
     })
     .catch((error) => {
+      hideLoader();
       console.log(error, "->erro");
     });
 });
@@ -88,7 +88,7 @@ signInContinue.addEventListener("click", (event) => {
     .catch((error) => {
       hideLoader();
       console.log(error, "Log in error");
-      if (error.code === "auth/invalid-login-credentials") {
+      if (error.code === "auth/invalid-credential") {
         showNotification("Error", "Invalid Credentials ", "error");
       }
     });

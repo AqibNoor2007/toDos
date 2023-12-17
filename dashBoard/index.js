@@ -2,7 +2,7 @@ import {
   getAuth,
   onAuthStateChanged,
   signOut,
-} from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js";
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import {
   getFirestore,
   collection,
@@ -17,12 +17,12 @@ import {
   orderBy,
   updateDoc,
   deleteDoc,
-} from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 import {
   getStorage,
   ref,
   getDownloadURL,
-} from "https://www.gstatic.com/firebasejs/10.6.0/firebase-storage.js";
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
 
 const auth = getAuth();
 const cloudStorage = getFirestore();
@@ -49,29 +49,8 @@ showLoader();
 onAuthStateChanged(auth, async (user) => {
   currentUser = user;
   if (user) {
-    try {
-      logInUser = await getDoc(doc(cloudStorage, "auth_users", user.uid)).then(
-        (data) => data.data()
-      );
-      welcomeMsg.innerText = `Welcome ${logInUser.user_name}`;
-      fetchTodosData();
-      if (logInUser.profile_img == "undefined") {
-        if (logInUser.user_gender == "male") {
-          profileImg.setAttribute("src", "../assets/menAvatar.png");
-        } else if (logInUser.user_gender == "female") {
-          profileImg.setAttribute("src", "../assets/femaleAvatar.png");
-        } else {
-          profileImg.setAttribute("src", "../assets/otherAvatar.png");
-        }
-      }
-      // else {
-      //   getDownloadURL(ref(storege, logInUser.profile_img)).then((url) =>
-      //     console.log(url, "->url")
-      //   );
-      // }
-    } catch {
-      hideLoader();
-    }
+    showUserDetail(currentUser);
+    fetchTodosData();
   } else {
     window.location.href = "/auth/signIn/index.html";
   }
@@ -88,6 +67,31 @@ signOutBtn.addEventListener("click", () => {
       console.log(error, "-> data");
     });
 });
+
+const showUserDetail = async (currentUser) => {
+  try {
+    logInUser = await getDoc(
+      doc(cloudStorage, "auth_users", currentUser.uid)
+    ).then((data) => data.data());
+    welcomeMsg.innerText = `Welcome ${logInUser.user_name}`;
+    if (logInUser.profile_img == "undefined") {
+      if (logInUser.user_gender == "male") {
+        profileImg.setAttribute("src", "../assets/menAvatar.png");
+      } else if (logInUser.user_gender == "female") {
+        profileImg.setAttribute("src", "../assets/femaleAvatar.png");
+      } else {
+        profileImg.setAttribute("src", "../assets/otherAvatar.png");
+      }
+    }
+    // else {
+    //   getDownloadURL(ref(storege, logInUser.profile_img)).then((url) =>
+    //     console.log(url, "->url")
+    //   );
+    // }
+  } catch {
+    hideLoader();
+  }
+};
 
 const handleBtnDissable = () => {
   if (toDoValue.length > 0) {
@@ -342,7 +346,7 @@ const paginationUi = async (totalTodos) => {
   existLis.forEach((li) => li.remove());
   idTodo = totalTodos + 1;
   const totalPages = Math.ceil(totalTodos / limitPerPage);
-
+  console.log(filterSelect, "filter");
   for (let i = 1; i <= totalPages; i++) {
     const li = document.createElement("li");
     li.classList.add("page-item");
