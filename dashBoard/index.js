@@ -346,7 +346,7 @@ const paginationUi = async (totalTodos) => {
   existLis.forEach((li) => li.remove());
   idTodo = totalTodos + 1;
   const totalPages = Math.ceil(totalTodos / limitPerPage);
-  console.log(filterSelect, "filter");
+
   for (let i = 1; i <= totalPages; i++) {
     const li = document.createElement("li");
     li.classList.add("page-item");
